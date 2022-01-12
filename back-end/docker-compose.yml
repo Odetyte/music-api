@@ -3,7 +3,27 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_USER: odetamaslovaite
-      POSTGRES_PASSWORD: odetamaslovaite
+      POSTGRES_USER: jam_admin
+      POSTGRES_PASSWORD: bobmarley
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jam_admin"]
+      interval: 2s
+      timeout: 5s
+      retries: 5
     ports:
       - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  webserver:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+
+volumes:
+  db-data:
