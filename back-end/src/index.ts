@@ -1,30 +1,25 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import { port } from './config';
-import app from './app';
-import {Request, Response} from "express";
-import { User } from "./entity/User";
+import app from "./app";
+import { Request, Response } from "express";
+import routes from "./routes/index";
 
-createConnection().then(async connection => {
-  app.listen(port);
-  console.log(`Express server has started on port ${port}.`);
+createConnection()
+  .then(async (connection) => {
+    let port = 3001;
 
+    // import routes
+    app.use("/", routes);
 
-  app.get('/api', (request: Request, response: Response) => {
-    response.json({ message: 'Hello from server! Pifas' });
-  });
+    // message to se if our Server is up and running
+    app.listen(port);
+    console.log(
+      `Hello:) Server has started on port ${port}. 🎸 Let's make some jamming music!🎼`
+    );
 
-  const userRepository = connection.getRepository(User);
-
-
-   app.get("/users", async(req: Request, res: Response) => {
-        const users = await userRepository.find();
-        res.json(users);
+    // check if it connects to frontend
+    app.get("/api", (request: Request, response: Response) => {
+      response.json({ message: "Hello from server of music jam!" });
     });
-
-  app.post("/users", async (req: Request, res: Response) => {
-        const user = await userRepository.create(req.body);
-        const results = await userRepository.save(user);
-        return res.send(results);
-    });
-}).catch(error => console.log(error));
+  })
+  .catch((error) => console.log(error));

@@ -1,9 +1,9 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "postgres",
    "port": 5432,
-   "username": "odetamaslovaite",
-   "password": "odetamaslovaite",
+   "username": "jam_admin",
+   "password": "bobmarley",
    "database": "postgres",
    "synchronize": true,
    "logging": false,
