@@ -1,8 +1,8 @@
-# Welcome to rock-n-roll 🎼
+# Welcome to ROCK-N-ROLL 🎼
 
 ## About
 
-rock-n-roll is a web service that allows you to create music jams and discover existing ones, all while taking care of security by implementing user authentication.
+ROCK-N-ROLL is a web service that allows you to create music jams and discover existing ones, all while taking care of security by implementing user authentication.
 
 This project implements the following user stories:
 
@@ -23,6 +23,8 @@ I created
 - AuthController to authenticate user
 - Postgres database
 - Database connections using `TypeORM`
+- Implemented Front End skeleton with React
+
 <!-- - Views(templates) would be needed to add in a future, as for now it is in a form of json. -->
 
 **Note**: User credentials (for Postgres) are stored in plain text in the code to make sure that anyone can clone this project and run it on their own without any additional configuration. In a real-world project, secrets and credentials should be stored outside of the context of this repository and referenced accordingly in the code, for example in a key file on the user's machine.
@@ -32,13 +34,13 @@ I created
 Clone the repo
 
 ```bash
-git clone git@github.com:Odetyte/music-api.git
+git clone git@github.com:Odetyte/rock-n-roll.git
 ```
 
 and navigate to the `back-end` folder
 
 ```bash
-cd back-end
+cd rock-n-roll/back-end
 ```
 
 Finally run
@@ -71,9 +73,10 @@ In your HTTP request header, add:
 | :--------- | :-------------------------------------------- |
 | auth-token | JWT token returned from the `/login` endpoint |
 
-## Future Imporvements
+## Future Improvements
 
 - Input validations for all fields
 - Hash password
 - Swagger API docs
 - Add more cool features
+- Implement Front End
