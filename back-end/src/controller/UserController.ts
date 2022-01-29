@@ -25,7 +25,9 @@ export default class UserController {
     const emailExist = await userRepository.findOne({ email: email });
 
     if (emailExist)
-      return response.status(400).send("User with such email already exsits.");
+      return response
+        .status(400)
+        .send({ message: "User with such email already exsits." });
 
     try {
       await userRepository.save(user);
@@ -62,7 +64,7 @@ export default class UserController {
       const results = await jamRepository.save(jamSession);
       return response.send(results);
     } catch (error) {
-      response.status(400).send("Something went wrong");
+      response.status(400).send({ message: "Something went wrong" });
     }
   };
 }

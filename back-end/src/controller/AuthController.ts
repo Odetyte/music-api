@@ -26,7 +26,7 @@ export default class AuthController {
         response.status(200).json({ authToken: token });
       }
     } catch (error) {
-      response.status(400).send("Email or password is incorrect");
+      response.status(400).send({ message: "Email or password is incorrect" });
     }
   };
 }
