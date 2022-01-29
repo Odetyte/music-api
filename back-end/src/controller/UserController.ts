@@ -28,11 +28,13 @@ export default class UserController {
       return response.status(400).send("User with such email already exsits.");
 
     try {
-      const results = await userRepository.save(user);
+      await userRepository.save(user);
       return response.send({
         userId: user.id,
         username: user.username,
         bandRole: user.bandRole,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
       });
     } catch (error) {
       console.log(error);
