@@ -67,11 +67,11 @@ This app exposes a RESTful API that can be accessed via any HTTP client such as 
 
 ### Use of Authorization token
 
-In your HTTP request header, add:
+In your HTTP request Authorization tab , add:
 
-| key        | Value                                         |
-| :--------- | :-------------------------------------------- |
-| auth-token | JWT token returned from the `/login` endpoint |
+|              |                                               |
+| :----------- | :-------------------------------------------- |
+| Bearer Token | JWT token returned from the `/login` endpoint |
 
 ## Future Improvements
 
