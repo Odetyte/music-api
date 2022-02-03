@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { User } from "./User";
 import BandRole from "../helpers/BandRole";
+import { truncateSync } from "fs";
 
 @Entity()
 export class JamSession {
@@ -20,8 +21,13 @@ export class JamSession {
   @Column({ nullable: true })
   location: string;
 
-  @Column({ nullable: true })
-  bandRoleParticipants: BandRole;
+  @Column({
+    type: "enum",
+    enum: BandRole,
+    array: true,
+    nullable: true,
+  })
+  bandRoleParticipants: BandRole[];
 
   @Column()
   @CreateDateColumn()
